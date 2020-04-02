@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import { View, TouchableOpacity, Text, Platform, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { Ionicons } from '@expo/vector-icons'
-
 import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils/helpers'
 import { submitEntry, removeEntry } from '../utils/api'
 import { white, purple } from '../utils/colors'
 import { addEntry } from '../actions'
-
 import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciSteppers'
 import DateHeader from './DateHeader'

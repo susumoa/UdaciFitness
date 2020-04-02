@@ -1,11 +1,8 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-
 import { getMetricMetaInfo } from '../utils/helpers'
 import { gray } from '../utils/colors'
-
 import DateHeader from './DateHeader'
-
 
 export default function MetricCard({ date, metrics }) {
   return (
