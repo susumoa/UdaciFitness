@@ -7,14 +7,31 @@ import MetricCard from './MetricCard'
 
 class EntryDetail extends Component {
   render() {
+    const { metrics } = this.props
     return (
       <View>
-        <View>
-          <Text>Entry Detail - {JSON.stringify(this.props.route.params.entryId)}</Text>
+        <View style={styles.container}>
+          <MetricCard metrics={metrics} />
         </View>
       </View>
     )
   }
 }
 
-export default EntryDetail
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: white,
+    padding: 15,
+  },
+});
+
+function mapStateToProps(entries, { route }) {
+  const { entryId } = route.params
+
+  return {
+    entryId,
+    metrics: entries[entryId]
+  }
+}
+
+export default connect(mapStateToProps)(EntryDetail)
