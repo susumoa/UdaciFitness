@@ -72,10 +72,20 @@ export default class App extends React.Component {
           <NavigationContainer>
             <Stack.Navigator
               initialRouteName='Home'
-              headerMode='none'
+              headerMode='screen'
             >
-              <Stack.Screen name="Home" component={Tab} />
-              <Stack.Screen name="Entry Detail" component={EntryDetail} />
+              <Stack.Screen
+                name='Home'
+                component={Tab}
+                options={{
+                  headerShown: false
+                }}
+              />
+              <Stack.Screen
+                name='Entry Detail'
+                component={EntryDetail}
+                options={({ route }) => ({ title: `${route.params.entryId.slice(0, 4)}/${route.params.entryId.slice(5, 7)}/${route.params.entryId.slice(8)}` })}
+               />
             </Stack.Navigator>
           </NavigationContainer>
         </View>
