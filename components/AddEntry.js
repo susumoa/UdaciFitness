@@ -61,6 +61,7 @@ class AddEntry extends Component {
   submit = () => {
     const key = timeToString()
     const entry = this.state
+    const { navigation } = this.props
 
     this.props.dispatch(addEntry({
       [key]: entry
@@ -74,7 +75,7 @@ class AddEntry extends Component {
       eat: 0,
     }))
 
-    // Navigate to home
+    navigation.goBack()
 
     submitEntry({ key, entry })
 
@@ -88,7 +89,7 @@ class AddEntry extends Component {
       [key]: getDailyReminderValue()
     }))
 
-    // Route to home
+    navigation.goBack()
 
     removeEntry(key)
   }
