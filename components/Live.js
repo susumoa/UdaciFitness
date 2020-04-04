@@ -6,7 +6,7 @@ import { white, purple } from '../utils/colors'
 export default class Live extends Component {
   state = {
     coords: null,
-    status: 'undetermined',
+    status: 'denied',
     direction: ''
   }
   render() {
@@ -18,8 +18,11 @@ export default class Live extends Component {
 
     if (status === 'denied') {
       return (
-        <View>
-          <Text>Denied</Text>
+        <View style={styles.center}>
+          <Foundation name='alert' size={60} />
+          <Text style={{textAlign: 'center', marginTop: 15}}>
+            You denied your location. To fix this, visit your settings and enable location services for this app.
+          </Text>
         </View>
       )
     }
