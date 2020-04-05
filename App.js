@@ -10,6 +10,7 @@ import Constants from 'expo-constants'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import reducer from './reducers'
 import { purple, white } from './utils/colors'
+import { setLocalNotification } from './utils/helpers'
 import AddEntry from './components/AddEntry'
 import History from './components/History'
 import EntryDetail from './components/EntryDetail'
@@ -71,7 +72,10 @@ function Tab() {
 const Stack = createStackNavigator()
 
 export default class App extends React.Component {
- 
+  componentDidMount() {
+    setLocalNotification()
+  }
+
   render() {
     return (
       <Provider store={createStore(reducer)}>

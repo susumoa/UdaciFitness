@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import { View, TouchableOpacity, Text, Platform, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { Ionicons } from '@expo/vector-icons'
-import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils/helpers'
+import {
+  getMetricMetaInfo,
+  timeToString,
+  getDailyReminderValue,
+  clearLocalNotification,
+  setLocalNotification
+} from '../utils/helpers'
 import { submitEntry, removeEntry } from '../utils/api'
 import { white, purple } from '../utils/colors'
 import { addEntry } from '../actions'
@@ -79,7 +85,8 @@ class AddEntry extends Component {
 
     submitEntry({ key, entry })
 
-    // Clear local notification
+    clearLocalNotification()
+      .then(setLocalNotification)
   }
 
   reset = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, AsyncStorage } from 'react-native'
 import { Notifications } from 'expo'
 import * as Permissions from 'expo-permissions'
 import { FontAwesome, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
@@ -190,6 +190,7 @@ export function setLocalNotification() {
   AsyncStorage.getItem(NOTIFICATION_KEY)
     .then(JSON.parse)
     .then((data) => {
+      console.log(data)
       if (data === null) {
         Permissions.askAsync(Permissions.NOTIFICATIONS)
           .then(({ status }) => {
@@ -198,8 +199,8 @@ export function setLocalNotification() {
 
               let tomorrow = new Date()
               tomorrow.setDate(tomorrow.getDate() + 1)
-              tomorrow.setHours(20)
-              tomorrow.setMinutes(0)
+              tomorrow.setHours(10)
+              tomorrow.setMinutes(33)
 
               Notifications.scheduleLocalNotificationAsync(
                 createNotification(),
